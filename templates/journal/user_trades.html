@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Trades for Selected Account</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Select Account</button>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Ticker</th>
+            <th>Entry Price</th>
+            <th>Stop Price</th>
+            <th>TP Price</th>
+            <th>Trade Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trade in trades %}
+        <tr>
+            <td>{{ trade.ticker }}</td>
+            <td>{{ trade.entry_price }}</td>
+            <td>{{ trade.stop_price }}</td>
+            <td>{{ trade.tp_price }}</td>
+            <td>{{ trade.trade_type }}</td>
+            <td>
+                <a href="{% url 'trade_edit' trade.pk %}">Edit</a> |
+                <a href="{% url 'trade_delete' trade.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

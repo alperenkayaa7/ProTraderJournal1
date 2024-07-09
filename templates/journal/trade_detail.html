@@ -1,0 +1,9 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Trade Detail</h1>
+  <p>Entry Price: {{ trade.entry_price }}</p>
+  <p>Exit Price: {{ trade.exit_price }}</p>
+  <p>Quantity: {{ trade.quantity }}</p>
+  <p>Profit/Loss: {{ trade.profit_loss }}</p>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>My Accounts</h2>
+  <ul>
+    {% for account in accounts %}
+      <li>
+        <a href="{% url 'trade_list' account.pk %}">{{ account.account_name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'account_create' %}">Create New Account</a>
+{% endblock %}

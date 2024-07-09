@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Welcome to ProTraderJournal</h1>
+  {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}!</p>
+    <h2>My Trades</h2>
+    <ul>
+      {% for account in accounts %}
+        <li>
+          <a href="{% url 'trade_list' account.pk %}">{{ account.account_name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'account_create' %}">Create New Account</a>
+  {% endif %}
+{% endblock %}

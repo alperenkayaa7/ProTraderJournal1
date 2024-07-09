@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>My Trades</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Ticker</th>
+        <th>Entry Price</th>
+        <th>Stop Price</th>
+        <th>Take Profit Price</th>
+        <th>Close Price</th>
+        <th>Trade Type</th>
+        <th>Quantity</th>
+        <th>Commission</th>
+        <th>Timeframe</th>
+        <th>Trend</th>
+        <th>Risk R</th>
+        <th>Comments</th>
+        <th>Emotions Before</th>
+        <th>Emotions During</th>
+        <th>Emotions After</th>
+        <th>Trade Result</th>
+        <th>Visibility</th>
+        <th>Session</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for trade in trades %}
+      <tr>
+        <td>{{ trade.ticker }}</td>
+        <td>{{ trade.entry_price }}</td>
+        <td>{{ trade.stop_price }}</td>
+        <td>{{ trade.tp_price }}</td>
+        <td>{{ trade.close_price }}</td>
+        <td>{{ trade.trade_type }}</td>
+        <td>{{ trade.quantity }}</td>
+        <td>{{ trade.commission }}</td>
+        <td>{{ trade.timeframe }}</td>
+        <td>{{ trade.trend }}</td>
+        <td>{{ trade.risk_r }}</td>
+        <td>{{ trade.comments }}</td>
+        <td>{{ trade.emotions_before }}</td>
+        <td>{{ trade.emotions_during }}</td>
+        <td>{{ trade.emotions_after }}</td>
+        <td>{{ trade.trade_result }}</td>
+        <td>{{ trade.visibility }}</td>
+        <td>{{ trade.session }}</td>
+        <td>
+          <a href="{% url 'trade_edit' trade.pk %}">Edit</a>
+          <a href="{% url 'trade_delete' trade.pk %}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
